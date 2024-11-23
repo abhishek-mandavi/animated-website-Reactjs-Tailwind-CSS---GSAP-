@@ -136,7 +136,7 @@ const Hero = () => {
           />
         </div>
         <h1 className='special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75'>
-          A<b>P</b>EX L<b>E</b>G<b>E</b><b>ND</b>
+          <b>A</b><b>P</b><b>E</b><b>X</b><b> L</b><b>E</b><b>G</b><b>E</b><b>N</b><b>D</b><b>S</b>
         </h1>
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
@@ -157,7 +157,7 @@ const Hero = () => {
         </div>
       </div>
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        A<b>P</b>EX L<b>E</b>G<b>E</b><b>ND</b>
+        <b>A</b><b>P</b><b>E</b><b>X</b><b> L</b><b>E</b><b>G</b><b>E</b><b>N</b><b>D</b><b>S</b>
       </h1>
     </div>
   )
