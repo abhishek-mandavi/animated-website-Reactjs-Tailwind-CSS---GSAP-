@@ -1,9 +1,45 @@
 import { useRef } from 'react'
 import AnimatedTitle from './AnimatedTitle'
+import gsap from 'gsap';
 
 const Story = () => {
   
-  
+  const frameRef = useRef(null);
+  const handleMouseLeave = () =>{
+    const element = frameRef.current;
+    if (element) {
+      gsap.to(element, {
+        duration: 0.3,
+        rotateX: 0,
+        rotateY: 0,
+        ease: "power1.inOut",
+      });
+    }
+
+  }
+  const handleMouseMove = (event) =>{
+   const {clientX , clientY} = event;
+   const element = frameRef.current;
+
+   if(!element) return;
+
+   const rect =element.getBoundingClientRect();
+   const x = clientX - rect.left;
+   const Y = clientY - rect.top;
+
+   const centerX = rect.width / 2;
+   const centerY = rect.height / 2;
+
+   const rotateX = ((y - centerY) / centerY) * 10;
+   const rotateY = ((x - centerX) / centerY) * 10;
+   
+   gsap.to(element,{
+    duration: 0.3,
+    rotateX, rotateY,
+    transformPerspective: 500,
+    ease: 'power1.inOut'
+   })
+  }
 
   return (
     <section id='story' className='min-h-dvh w-screen bg-black text-blue-50'>
@@ -22,6 +58,11 @@ const Story = () => {
                     <div className='story-img-mask'>
                         <div className='story-img-content'>
                           <img
+                           ref={frameRef}
+                           onMouseLeave={handleMouseLeave}
+                           onMouseUp={handleMouseLeave}
+                           onMouseEnter={handleMouseLeave}
+                           onMouseMove={handleMouseMove}
                            src='/img/entrance.webp'
                            alt='entrance.webp'
                            className='object-contain'
